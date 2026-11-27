@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#0d1521">
+  <meta name="description" content="ผลงานออกแบบกราฟิกของ Niphat Sudchom">
+  <title>Niphat | Graphic Portfolio</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230d1521'/%3E%3Cpath d='M16 48V16h8l16 22V16h8v32h-8L24 26v22z' fill='%2368b9fa'/%3E%3C/svg%3E">
+
+  <style>
+    /*
+      สีของหน้าเปลี่ยนตามผลงานที่กำลังดู
+      แต่ละ figure มี --hue (เฉดสีหลักของภาพ) กับ --tint (ความเข้มของสีพื้น)
+      สคริปต์ด้านล่างจะคัดลอกค่าของหน้าปัจจุบันขึ้นไปที่ :root
+    */
+    :root {
+      --hue: 25;
+      --tint: 0.05;
+      --text: #f2f6fc;
+      --gutter: 24px;
+      color-scheme: dark; /* scrollbar มืดตามหน้าเว็บ */
+    }
+
+    :root,
+    figure {
+      --bg: oklch(0.185 var(--tint) var(--hue));
+      --surface: oklch(0.24 var(--tint) var(--hue));
+      --line: oklch(0.3 var(--tint) var(--hue));
+      --muted: oklch(0.8 0.03 var(--hue));
+      --accent: oklch(0.82 0.12 var(--hue));
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-padding-top: 88px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Tahoma, sans-serif;
+      transition: background-color 0.8s ease-out;
+    }
+
+    ::selection {
+      background: var(--accent);
+      color: var(--bg);
+    }
+
+    /* ---------- Header ---------- */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      background: var(--bg);
+      border-bottom: 1px solid var(--line);
+      transition: background-color 0.8s ease-out, border-color 0.8s ease-out;
+    }
+
+    .bar {
+      max-width: 960px;
+      min-height: 76px;
+      margin: 0 auto;
+      padding: 12px var(--gutter);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .brand {
+      font-size: 16px;
+      font-weight: bold;
+      letter-spacing: 0.08em;
+    }
+
+    .brand small {
+      display: block;
+      margin-top: 5px;
+      font-size: 12px;
+      font-weight: normal;
+      letter-spacing: 0.13em;
+      color: var(--muted);
+    }
+
+    .actions {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    #counter {
+      font-size: 14px;
+      color: var(--muted);
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    #current {
+      color: var(--accent);
+    }
+
+    .download {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      padding: 0 14px;
+      font-size: 14px;
+      color: oklch(0.95 0.03 var(--hue));
+      text-decoration: none;
+      white-space: nowrap;
+      background: oklch(0.3 0.07 var(--hue));
+      border: 1px solid oklch(0.42 0.09 var(--hue));
+      border-radius: 8px;
+      transition: background-color 0.8s ease-out, border-color 0.8s ease-out;
+    }
+
+    @media (hover: hover) {
+      .download:hover {
+        background: oklch(0.36 0.09 var(--hue));
+        border-color: oklch(0.5 0.11 var(--hue));
+        transition-duration: 0.15s;
+      }
+    }
+
+    .download:active {
+      background: oklch(0.25 0.06 var(--hue));
+    }
+
+    a:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 4px;
+    }
+
+    /* ---------- Pages ---------- */
+
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 28px var(--gutter) 0;
+    }
+
+    figure {
+      margin: 0 0 28px;
+    }
+
+    figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: var(--surface);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    figcaption {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 0;
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--muted);
+    }
+
+    figcaption .num {
+      color: var(--accent);
+      font-variant-numeric: tabular-nums;
+    }
+
+    footer {
+      padding: 0 20px 35px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* ---------- Mobile ---------- */
+
+    @media (max-width: 600px) {
+      :root {
+        --gutter: 12px;
+      }
+
+      .bar {
+        min-height: 68px;
+        padding-block: 10px;
+      }
+
+      .brand {
+        font-size: 14px;
+      }
+
+      .brand small {
+        font-size: 11px;
+        letter-spacing: 0.06em;
+      }
+
+      .actions {
+        gap: 10px;
+      }
+
+      #counter {
+        font-size: 13px;
+      }
+
+      .download {
+        padding: 0 11px;
+        font-size: 13px;
+      }
+
+      main {
+        padding-top: 14px;
+      }
+
+      figure {
+        margin-bottom: 18px;
+      }
+
+      figcaption {
+        padding: 10px 0;
+        font-size: 12px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      body,
+      header,
+      .download {
+        transition: none;
+      }
+    }
+
+    /* ---------- Print: one image per page ---------- */
+
+    @media print {
+      header,
+      footer,
+      figcaption {
+        display: none;
+      }
+
+      body {
+        background: white;
+      }
+
+      main {
+        max-width: none;
+        padding: 0;
+      }
+
+      figure {
+        margin: 0;
+        break-inside: avoid;
+      }
+
+      /* ขึ้นหน้าใหม่ก่อนรูปถัดไป แทน break-after ที่ทำให้มีหน้าว่างต่อท้าย */
+      figure + figure {
+        break-before: page;
+      }
+
+      figure img {
+        max-height: 98vh;
+        object-fit: contain;
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="bar">
+      <div class="brand">
+        NIPHAT
+        <small>GRAPHIC PORTFOLIO</small>
+      </div>
+      <div class="actions">
+        <span id="counter"><span id="current">1</span> / 9</span>
+        <a class="download" href="niphat-graphic-portfolio.pdf" download>ดาวน์โหลด PDF</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <figure id="page-1" style="--hue: 40; --tint: 0.05">
+      <img src="pages/page-01.webp" width="2480" height="3508" alt="Portfolio - Niphat Sudchom" fetchpriority="high">
+      <figcaption><span class="num">01</span> <span>Portfolio - Niphat Sudchom</span></figcaption>
+    </figure>
+
+    <figure id="page-2" style="--hue: 265; --tint: 0.05">
+      <img src="pages/page-02.webp" width="1920" height="2400" alt="Shai Gilgeous-Alexander - MVP" loading="lazy">
+      <figcaption><span class="num">02</span> <span>Shai Gilgeous-Alexander - MVP</span></figcaption>
+    </figure>
+
+    <figure id="page-3" style="--hue: 25; --tint: 0.045">
+      <img src="pages/page-03.webp" width="1697" height="2400" alt="Derrick Rose" loading="lazy">
+      <figcaption><span class="num">03</span> <span>Derrick Rose</span></figcaption>
+    </figure>
+
+    <figure id="page-4" style="--hue: 25; --tint: 0.02">
+      <img src="pages/page-04.webp" width="1920" height="2400" alt="LeBron James" loading="lazy">
+      <figcaption><span class="num">04</span> <span>LeBron James</span></figcaption>
+    </figure>
+
+    <figure id="page-5" style="--hue: 265; --tint: 0.05">
+      <img src="pages/page-05.webp" width="1697" height="2400" alt="Shai Gilgeous-Alexander - SGA" loading="lazy">
+      <figcaption><span class="num">05</span> <span>Shai Gilgeous-Alexander - SGA</span></figcaption>
+    </figure>
+
+    <figure id="page-6" style="--hue: 130; --tint: 0.045">
+      <img src="pages/page-06.webp" width="1920" height="2400" alt="Vinicius Junior" loading="lazy">
+      <figcaption><span class="num">06</span> <span>Vinicius Junior</span></figcaption>
+    </figure>
+
+    <figure id="page-7" style="--hue: 255; --tint: 0.045">
+      <img src="pages/page-07.webp" width="1697" height="2400" alt="NBA Draft - Pick 3" loading="lazy">
+      <figcaption><span class="num">07</span> <span>NBA Draft - Pick 3</span></figcaption>
+    </figure>
+
+    <figure id="page-8" style="--hue: 265; --tint: 0.035">
+      <img src="pages/page-08.webp" width="1920" height="2400" alt="Ousmane Dembele" loading="lazy">
+      <figcaption><span class="num">08</span> <span>Ousmane Dembele</span></figcaption>
+    </figure>
+
+    <figure id="page-9" style="--hue: 105; --tint: 0.04">
+      <img src="pages/page-09.webp" width="2400" height="1698" alt="Lamine Yamal" loading="lazy">
+      <figcaption><span class="num">09</span> <span>Lamine Yamal</span></figcaption>
+    </figure>
+  </main>
+
+  <footer>Niphat Sudchom · Graphic Portfolio</footer>
+
+  <script>
+    // ตัวเลขหน้าที่มุมขวาบน เปลี่ยนตามหน้าที่กำลังดูอยู่
+    const currentLabel = document.getElementById('current');
+    const themeColor = document.querySelector('meta[name="theme-color"]');
+    const pages = document.querySelectorAll('main figure');
+    let ticking = false;
+    let shown = 0;
+
+    // ใช้สีของผลงานหน้านั้นเป็นสีพื้นและสีเน้นของทั้งหน้า
+    function showPage(n) {
+      if (n === shown) return;
+      shown = n;
+      currentLabel.textContent = n;
+
+      const page = pages[n - 1];
+      const hue = page.style.getPropertyValue('--hue');
+      const tint = page.style.getPropertyValue('--tint');
+      const root = document.documentElement.style;
+      root.setProperty('--hue', hue);
+      root.setProperty('--tint', tint);
+      themeColor.content = `oklch(0.185 ${tint} ${hue})`;
+    }
+
+    function updateCounter() {
+      ticking = false;
+
+      const atBottom = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 4;
+      let current = 1;
+
+      if (atBottom) {
+        // เลื่อนสุดแล้วให้โชว์หน้าสุดท้ายเลย เพราะหน้าสุดท้ายอาจสั้นจนไม่ถึงเส้น
+        current = pages.length;
+      } else {
+        // หน้าปัจจุบัน = หน้าล่าสุดที่ขอบบนเลื่อนผ่านเส้น 40% ของจอไปแล้ว
+        const line = window.innerHeight * 0.4;
+        pages.forEach((page, i) => {
+          if (page.getBoundingClientRect().top <= line) current = i + 1;
+        });
+      }
+
+      showPage(current);
+    }
+
+    function requestUpdate() {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(updateCounter);
+      }
+    }
+
+    window.addEventListener('scroll', requestUpdate, { passive: true });
+    window.addEventListener('resize', requestUpdate);
+    updateCounter();
+  </script>
+</body>
+</html>
